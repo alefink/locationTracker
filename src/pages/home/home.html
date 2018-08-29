@@ -6,19 +6,12 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content color="dnager">
-    <ion-list>
-        <ion-item class="text" *ngFor="let track of previousTracks2 | async">
-            {{track.user | json}}
-        </ion-item>
-    </ion-list>
-</ion-content>
 
 <ion-content padding>
 
     <button ion-button full icon-left (click)="startTracking()" *ngIf="!isTracking">
       <ion-icon name="locate"></ion-icon>
-      Start Tracking
+      GPS LOCATION TRACKING
     </button>
     <button ion-button full color="danger" icon-left (click)="stopTracking()" *ngIf="isTracking">
       <ion-icon name="hand"></ion-icon>

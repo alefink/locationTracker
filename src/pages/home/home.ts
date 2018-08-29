@@ -24,7 +24,7 @@ export class HomePage {
   trackedRoute = [];
   previousTracks = [];
   previousTracks2:Observable<any[]>;
-
+  colorpath = "FF0000" //rojo
 
   positionSubscription: Subscription;
 
@@ -70,7 +70,7 @@ export class HomePage {
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
 
-      //let latLng;
+
       this.geolocation.getCurrentPosition().then(pos => {
         let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
         this.map.setCenter(latLng);
@@ -78,13 +78,13 @@ export class HomePage {
         let marker = new google.maps.Marker({
           position:latLng,
           map: this.map,
-          title:"Alejandro"
+          title:"user anonimo"
         });
 
       }).catch((error) => {
         console.log('Error getting location', error);
       });
-      //marker.setMap(this.map);
+
     });
   }
 
@@ -101,7 +101,7 @@ export class HomePage {
 
     this.positionSubscription = this.geolocation.watchPosition()
       .pipe(
-        filter((p) => p.coords !== undefined) //Filter Out Errors
+        filter((p) => p.coords !== undefined)
       )
       .subscribe(data => {
         setTimeout(() => {
@@ -129,7 +129,7 @@ export class HomePage {
           icon: lineSymbol,
           offset: '100%'
         }],
-        strokeColor: '#0000B3',
+        strokeColor: this.colorpath,
         strokeOpacity: 1.0,
         strokeWeight: 15,
         scale:16
