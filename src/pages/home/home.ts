@@ -137,6 +137,7 @@ export class HomePage {
       this.currentMapTrack.setMap(this.map);
     }
   }
+  //para la grolocalizacion
   stopTracking() {
     let newRoute = { finished: new Date().getTime(), path: this.trackedRoute };
     this.previousTracks.push(newRoute);
@@ -146,10 +147,9 @@ export class HomePage {
       console.log(ele);
       this.DB.list('user-tracks').push({
         when: 'qq',
-        user: 'alejandro.finkelberg@gmail.com',
-
+        user: 'alejandro.finkelberg@gmail.com'
       });
-hi
+
     });
     this.isTracking = false;
     this.positionSubscription.unsubscribe();
