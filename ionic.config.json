@@ -1,5 +1,7 @@
 {
-  "name": "LocationTracker",
-  "integrations": {},
-  "type": "ionic-angular"
+    "name": "LocationTracker",
+    "integrations": {
+        "cordova": {}
+    },
+    "type": "ionic-angular"
 }
