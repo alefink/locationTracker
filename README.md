@@ -1,5 +1,4 @@
 ## LOCATION TRACKER
-================
 
 Este proyecto se encuentra en etapa de evolucion continua.
 Por esto son bienvenidos todos aquellos que quieran contribuir.
