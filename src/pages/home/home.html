@@ -23,7 +23,7 @@
     <ion-list>
         <ion-list-header>Previous Tracks</ion-list-header>
         <ion-item *ngFor="let route of previousTracks">
-            {{ route.finished | date }}, {{ route.path.length }} Waypoints
+            {{ route.finished | date }}, {{ route.length }} Waypoints
             <button ion-button clear item-end (click)="showHistoryRoute(route.path)">View Route</button>
         </ion-item>
     </ion-list>

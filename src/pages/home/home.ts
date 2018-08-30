@@ -20,9 +20,11 @@ export class HomePage {
 
   isTracking = false;
   trackedRoute = [];
-  previousTracks = [];
+  previousTracks= [];
   previousTracks2:Observable<any[]>;
-  colorpath = "FF0000"
+  //previousTracks:Observable<any[]>;
+  colorpath = "FF0000";
+  userTest = "alejandro.finkelberg@gmail.com";
 
   positionSubscription: Subscription;
 
@@ -33,7 +35,7 @@ export class HomePage {
     private geolocation: Geolocation,
     private storage: Storage)
     {
-      this.previousTracks2 = DB.list('pistas').valueChanges();
+      //this.previousTracks2 = DB.list('pistas').valueChanges();
     }
 
   ionViewDidLoad() {
@@ -55,11 +57,7 @@ export class HomePage {
         let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
         this.map.setCenter(latLng);
         this.map.setZoom(18);
-        let marker = new google.maps.Marker({
-          position:latLng,
-          map: this.map,
-          title:"anonimo"
-        });
+
 
       }).catch((error) => {
         console.log('Error getting location', error);
@@ -74,8 +72,12 @@ export class HomePage {
       if (data) {
         this.previousTracks = data;
       }
+    }).catch((error) => {
+          console.log('error....');
     });
+
   }
+
   startTracking() {
     this.isTracking = true;
     this.trackedRoute = [];
@@ -87,7 +89,13 @@ export class HomePage {
       .subscribe(data => {
         setTimeout(() => {
 
-          this.trackedRoute.push({ lat: data.coords.latitude, lng: data.coords.longitude });
+          this.trackedRoute.push(
+            {
+            user:this.userTest,
+            finished: Date.now(),
+            lat: data.coords.latitude,
+            lng: data.coords.longitude
+          })
 
           this.redrawPath(this.trackedRoute);
         }, 0);
@@ -100,7 +108,7 @@ export class HomePage {
       this.currentMapTrack.setMap(null);
     }
 
-    if (path.length > 1) {
+      if (path.length > 1) {
       var lineSymbol = {
         path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
       };
@@ -113,28 +121,17 @@ export class HomePage {
         }],
         strokeColor: this.colorpath,
         strokeOpacity: 1.0,
-        strokeWeight: 15,
-        scale:16
+        strokeWeight: 5,
+        scale:10
       });
       this.currentMapTrack.setMap(this.map);
     }
   }
 
   stopTracking() {
-    let newRoute = { finished: new Date().getTime(), path: this.trackedRoute };
-    this.previousTracks.push(newRoute);
-    //almacenando localmente la ruta
-    this.storage.set('routes', this.previousTracks);
-    //console.log(this.previousTracks.length);
-    //almacenando las rutas en fierbase.
-    this.previousTracks.forEach(ele => {
-      console.log(ele);
-      this.DB.list('user-tracks').push({
-        when: '',
-        user: 'anonimo'
-      });
-
-    });
+    //let newRoute = { this.trackedRoute };
+    this.previousTracks.push(this.trackedRoute);
+    this.DB.list('tracks').push(this.trackedRoute);
     this.isTracking = false;
     this.positionSubscription.unsubscribe();
     this.currentMapTrack = null;
