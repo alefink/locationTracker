@@ -1,4 +1,3 @@
-import { User } from './../../../../evaluar apps/mySuperApp/src/providers/user/user';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -7,7 +6,6 @@ import { filter } from 'rxjs/operators';
 import { Storage } from '@ionic/storage';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
-import { elementAttribute } from '@angular/core/src/render3/instructions';
 
 declare var google;
 
@@ -24,7 +22,7 @@ export class HomePage {
   trackedRoute = [];
   previousTracks = [];
   previousTracks2:Observable<any[]>;
-  colorpath = "FF0000" //rojo
+  colorpath = "FF0000"
 
   positionSubscription: Subscription;
 
@@ -35,25 +33,7 @@ export class HomePage {
     private geolocation: Geolocation,
     private storage: Storage)
     {
-      console.log("Esta entrando al constructor!!!!!!!!!!!!!!11");
       this.previousTracks2 = DB.list('pistas').valueChanges();
-      /*
-      DB.list('user-tracks').push({
-        user: 'alejandro.finkelberg@gmail.com',
-        lat:'12345670',
-        lgt:'3322122',
-        fecha: Date.now()
-      });
-      */
-      /*
-      //let texto = this.previousTracks2.user;
-      this.previousTracks2.forEach(element => {
-        console.log(element);
-      });
-
-      //console.log(texto);
-      console.log(this.previousTracks2);
-      //console.log('Valor obtenido  desde FIREBASE:'+ texto); */
     }
 
   ionViewDidLoad() {
@@ -78,7 +58,7 @@ export class HomePage {
         let marker = new google.maps.Marker({
           position:latLng,
           map: this.map,
-          title:"user anonimo"
+          title:"anonimo"
         });
 
       }).catch((error) => {
@@ -89,6 +69,7 @@ export class HomePage {
   }
 
   loadHistoricRoutes() {
+    // obtenr las rutas de firebse
     this.storage.get('routes').then(data => {
       if (data) {
         this.previousTracks = data;
@@ -105,9 +86,11 @@ export class HomePage {
       )
       .subscribe(data => {
         setTimeout(() => {
+
           this.trackedRoute.push({ lat: data.coords.latitude, lng: data.coords.longitude });
+
           this.redrawPath(this.trackedRoute);
-        }, 1);
+        }, 0);
       });
 
   }
@@ -123,7 +106,6 @@ export class HomePage {
       };
       this.currentMapTrack = new google.maps.Polyline({
         path:path,
-        //path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
         geodesic: true,
         icons: [{
           icon: lineSymbol,
@@ -137,17 +119,19 @@ export class HomePage {
       this.currentMapTrack.setMap(this.map);
     }
   }
-  //para la grolocalizacion
+
   stopTracking() {
     let newRoute = { finished: new Date().getTime(), path: this.trackedRoute };
     this.previousTracks.push(newRoute);
+    //almacenando localmente la ruta
     this.storage.set('routes', this.previousTracks);
-    console.log(this.previousTracks.length);
+    //console.log(this.previousTracks.length);
+    //almacenando las rutas en fierbase.
     this.previousTracks.forEach(ele => {
       console.log(ele);
       this.DB.list('user-tracks').push({
-        when: 'qq',
-        user: 'alejandro.finkelberg@gmail.com'
+        when: '',
+        user: 'anonimo'
       });
 
     });
