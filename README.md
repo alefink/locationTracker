@@ -1,5 +1,5 @@
 
-Este proyecto esta terminado y permite un continua evolucion.
+Este proyecto ya esta terminado y permite un continua evolucion.
 
 Esta es una applicacion mobile que permite 
 
