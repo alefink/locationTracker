@@ -3,11 +3,11 @@ Este proyecto ya esta terminado y permite un continua evolucion.
 
 Esta es una applicacion mobile que permite 
 
-#seguimiento de un camino recorrido desde un punto inicial hasta un punto final en tiempo real. 
-#visualizar el recorrido en un mapa.
-#almacenar los distintos recorridos en fomra local limitadamente 
-#almacenar el recorrido permanente.
-#Esto almacena los recorridos de todos los usuarios que instalan la app
+*seguimiento de un camino recorrido desde un punto inicial hasta un punto final en tiempo real. 
+*visualizar el recorrido en un mapa.
+*almacenar los distintos recorridos en fomra local limitadamente 
+*almacenar el recorrido permanente.
+*Esto almacena los recorridos de todos los usuarios que instalan la app
 
 La utilidad de este proyecto es inicilamente poder evaluar y apprender distintas tecnologias
 Cosa que he podiso lograr con comodidad.
