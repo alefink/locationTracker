@@ -20,3 +20,5 @@ Quien mantiene y contribuye al proyecto
 Este proyecto esta abierto para que cualquiera pueda contribuir al crecimiento. Con mejora e incorporar nuevas caracteristicas. O  correccion de errores
 
 Instuciones para su instalacion para desarrollar y ejecutar.
+Actualmente me encuento trabajando en difernetes trabajos. 
+Estoy armando un  instructivo para instalarlo localmente y dejarlo listo para desarrlar dentro de el
