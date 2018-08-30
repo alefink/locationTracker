@@ -1,11 +1,11 @@
-LOCATION TRACKER
+##LOCATION TRACKER
 ================
 
 Este proyecto se encuentra en etapa de evolucion continua.
 Por esto son bienvenidos todos aquellos que quieran contribuir.
 pobando la app. o proponiendo funcionalidad o mejiorando el codigo.
 
-Esta es una applicacion mobile que permite 
+Esta es una app mobil plataforma androi que permite 
 
 * seguimiento de un camino recorrido desde un punto inicial hasta un punto final en tiempo real. 
 * visualizar el recorrido en un mapa.
