@@ -13,8 +13,7 @@ Esta es una applicacion mobile que permite
 * almacenar el recorrido permanente.
 * Esto almacena los recorridos de todos los usuarios que instalan la app
 
-La utilidad de este proyecto es inicilamente poder evaluar y apprender distintas tecnologias
-Cosa que he podiso lograr con comodidad.
+El proposito de este proyecto es inicilamente poder evaluar y apprender distintas tecnologias
 
 Cómo pueden los usuarios comenzar con el proyecto
 Esta app es el punto de partida de un blog de paseos realizados y compartir las experiencias con distintos ususarios.
